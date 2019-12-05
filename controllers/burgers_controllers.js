@@ -16,7 +16,7 @@ app.get("/",function(req,res){
     });
 });
 
-app.post("/api/burgers",function(req,res){
+app.post("/burgers",function(req,res){
     burger.insertOne([
         "burger"
     ],[
@@ -29,7 +29,7 @@ app.post("/api/burgers",function(req,res){
 
 app.put("/burgers/:id",function(req,res){
     var condition = "id=" +req.params.id;
-
+    console.log(condition);
     burger.updateOne({
         devoured: true
     },condition,function(result){

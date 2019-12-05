@@ -10,5 +10,30 @@
 	</head>
 	<body>
 		{{{ body }}}
+
+		<script>
+			$(".change-burger").on("click", function(event) {
+				var id = $(this).data("id");
+				var newCondition = $(this).data("newCondition");
+
+				var newConState = {
+					devoured: newCondition
+				};
+
+				// Send the PUT request.
+				$.ajax("burgers/" + id, {
+				type: "PUT",
+				data: newConState
+				}).then(
+				function() {
+					console.log("changed condition to", newCondition);
+					// Reload the page to get the updated list
+					location.reload();
+				}
+				);
+				console.log(newCondition);
+			});
+
+		</script>
 	</body>
 </html>

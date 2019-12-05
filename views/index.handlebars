@@ -16,26 +16,26 @@
         <div class="row justify-content-between">
             <div class="col-4">
             {{#each burgers}}
-                {{#unless this.devoured}}
-                    <div>
-                    {{this.burger}}
-                    </div>
-                    <!--add Devoured botton-->
-                    <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
-                        <button type="submit">Devour It!!</button>
-                    </form>
+                {{#unless devoured}}
+                    <ul>
+                        {{> burgers/burger-block devoured=true}}
+
+                    </ul>
+
                 {{/unless}}
             {{/each}}
             </div>
 
             <div class="col-4">
                 {{#each burgers}}
-                    {{#if this.devoured}}
-                    <div>
-                    {{this.burger}}
-                    </div>
-                    {{/if}}
-                {{/each}}
+                {{#if devoured}}
+                    <ul>
+                        {{burger}}
+
+                    </ul>
+
+                {{/if}}
+            {{/each}}
             </div>
 
         </div>
